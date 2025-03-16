@@ -1,4 +1,4 @@
-import { Component, numberAttribute, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Map, View, Feature } from 'ol';
 import TileLayer from 'ol/layer/Tile';
@@ -10,8 +10,6 @@ import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 import Style from 'ol/style/Style.js';
-import { response } from 'express';
-import { set } from 'ol/transform';
 
 @Component({
   selector: 'app-root',
@@ -91,18 +89,17 @@ export class AppComponent implements OnInit {
             featureProjection: 'EPSG:3857',
           }),
         });
-        console.log('vectorSource...', vectorSource);
 
         const graveyardSet = new Set<string>();
         const buschhovenGraves = new Set<string>();
         const unassignedByGraveyard: { [key: string]: number } = {};
-        let sampleProperties: string[] = []; // For question 3
+        let sampleProperties: string[] = [];
         const statusSet = new Set<string>();
         const grabstelleSet = new Set<string>();
 
         vectorSource.getFeatures().forEach((feature) => {
           const graveyard = feature.get('friedhof');
-          const grabId = feature.get('grabId'); // Unique identifier for graves
+          const grabId = feature.get('grabId');
           const verstorbene = feature.get('verstorbene');
           const grabStatus = feature.get('grabstatus');
           const grabStelle = feature.get('grabstelle');
@@ -149,11 +146,11 @@ export class AppComponent implements OnInit {
           unassignedByGraveyard[a] > unassignedByGraveyard[b] ? a : b
         );
         console.log(
-          'Q4: Graveyard with most unassigned plots:',
-          mostUnassignedGraveyard,
-          'with',
-          unassignedByGraveyard[mostUnassignedGraveyard],
-          'unassigned plots'
+          `Q4: Graveyard with most unassigned plots:,
+          ${mostUnassignedGraveyard},
+          with,
+          ${unassignedByGraveyard[mostUnassignedGraveyard]},
+          unassigned plots`
         );
 
         // Map each unique status to a color
@@ -172,14 +169,7 @@ export class AppComponent implements OnInit {
           this.map.addLayer(this.vectorLayer);
         }
 
-        // Extract unique graveyards
-        // const graveyardSet = new Set<string>();
-        // vectorSource.getFeatures().forEach((feature) => {
-        //   const graveyard = feature.get('friedhof');
-        //   if (graveyard) graveyardSet.add(graveyard);
-        // });
         this.graveyards = Array.from(graveyardSet);
-
         console.log('this . graveyard..', this.graveyards);
       });
   }

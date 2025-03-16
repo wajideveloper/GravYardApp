@@ -1,0 +1,88 @@
+/* Reset and base styles */
+:host {
+  display: block;
+  height: 100vh;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+.main {
+  height: 100%;
+  background-color: #f0f2f5; /* Soft gray background */
+}
+
+.content {
+  display: flex;
+  height: 100%;
+  max-width: 1400px; /* Limit width for larger screens */
+  margin: 0 auto;
+}
+
+/* Left-side styling */
+.left-side {
+  width: 320px;
+  background-color: #ffffff;
+  padding: 40px 30px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between elements */
+  border-right: 1px solid #e8ecef;
+}
+
+.left-side h1 {
+  font-size: 2.8em;
+  color: #2c3e50; /* Dark blue-gray */
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.left-side p {
+  font-size: 1.3em;
+  color: #7f8c8d; /* Muted gray */
+  margin: 0;
+  line-height: 1.4;
+}
+
+.left-side select {
+  padding: 14px 12px;
+  font-size: 1.1em;
+  border: 2px solid #dfe6e9;
+  border-radius: 10px;
+  background-color: #f9fbfc;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #34495e; /* Darker text for contrast */
+}
+
+.left-side select:hover {
+  border-color: #3498db; /* Bright blue on hover */
+  background-color: #ffffff;
+}
+
+.left-side select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+.left-side select option {
+  padding: 10px;
+  background-color: #ffffff;
+  color: #34495e;
+}
+
+/* Right-side styling */
+.right-side {
+  flex: 1; /* Take up remaining space */
+  height: 100%;
+  background-color: #e9ecef; /* Light gray placeholder */
+  display: flex;
+}
+
+.right-side .map {
+  width: 100%;
+  height: 100%;
+}
